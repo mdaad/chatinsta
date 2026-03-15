@@ -10,20 +10,33 @@ dotenv.config();
 
 const app = express();
 const httpServer = createServer(app);
+
+// ============= PRODUCTION CORS ORIGINS =============
+const allowedOrigins = [
+  'http://localhost:5173',
+  'http://127.0.0.1:5173',
+  'http://100.99.169.71:5173',
+  'https://chatinsta.surge.sh',
+  'https://www.chatinsta.surge.sh',
+  'https://chatinsta-30pa.onrender.com'
+];
+
 const io = new Server(httpServer, {
   cors: {
-    origin: ['http://localhost:5173', 'http://127.0.0.1:5173', 'http://100.99.169.71:5173'],
+    origin: allowedOrigins,
     credentials: true
   }
 });
 
-// ============= FIX: INCREASE PAYLOAD LIMIT =============
 app.use(cors({
-  origin: ['http://localhost:5173', 'http://127.0.0.1:5173', 'http://100.99.169.71:5173'],
+  origin: allowedOrigins,
   credentials: true
 }));
-app.use(express.json({ limit: '50mb' })); // Increased for images
+app.use(express.json({ limit: '50mb' }));
 app.use(express.urlencoded({ extended: true, limit: '50mb' }));
+
+// Rest of your code remains exactly the same...
+// (apna poora backend code yahan rahega)
 
 const supabase = createClient(
   process.env.SUPABASE_URL,
@@ -663,4 +676,5 @@ const PORT = process.env.PORT || 5000;
 httpServer.listen(PORT, '0.0.0.0', () => {
   console.log(`🚀 Server running on port ${PORT}`);
   console.log(`📸 Image/Voice payload limit: 50mb`);
+  console.log(`🌍 CORS allowed:`, allowedOrigins);
 });
