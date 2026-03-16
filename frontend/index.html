@@ -2,12 +2,59 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- ============= PRIMARY META TAGS ============= -->
     <title>ChatInsta - Instagram Style Chat App</title>
+    <meta name="description" content="Experience the future of messaging with Instagram-style interface and real-time chat capabilities. Send voice messages, images, and more!" />
+    <meta name="keywords" content="chat, messaging, instagram, voice messages, images, real-time chat" />
+    <meta name="author" content="ChatInsta" />
+    
+    <!-- ============= PWA BASICS ============= -->
+    <meta name="theme-color" content="#8B5CF6" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="ChatInsta" />
+    <meta name="application-name" content="ChatInsta" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    
+    <!-- ============= PWA LINKS ============= -->
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="apple-touch-icon" href="/icons/icon-192x192.png" />
+    
+    <!-- ============= DNS PREFETCH ============= -->
+    <link rel="dns-prefetch" href="https://chatinsta-30pa.onrender.com" />
+    <link rel="preconnect" href="https://chatinsta-30pa.onrender.com" />
+    
+    <!-- ============= MAIN CSS ============= -->
+    <link rel="stylesheet" href="/src/index.css" />
   </head>
   <body>
     <div id="root"></div>
+    
+    <!-- ============= MAIN JS ============= -->
     <script type="module" src="/src/main.jsx"></script>
+    
+    <!-- ============= SERVICE WORKER REGISTRATION ============= -->
+    <script>
+      // Register Service Worker for PWA
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/sw.js')
+            .then(registration => {
+              console.log('✅ ServiceWorker registered:', registration.scope);
+            })
+            .catch(error => {
+              console.log('❌ ServiceWorker registration failed:', error);
+            });
+        });
+      }
+      
+      // Log PWA install prompt (optional)
+      window.addEventListener('beforeinstallprompt', (e) => {
+        console.log('✅ PWA can be installed');
+        // You can show custom install button here
+      });
+    </script>
   </body>
 </html>

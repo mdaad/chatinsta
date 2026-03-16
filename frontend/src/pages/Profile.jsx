@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { 
   User, Phone, Mail, Calendar, MapPin, Camera, 
   LogOut, ArrowLeft, Save, Heart, Star, Award,
-  Shield, Bell, Moon, Globe
+  Shield, Bell, Moon, Globe, Code, Zap
 } from 'lucide-react';
 import toast from 'react-hot-toast';
 
@@ -83,7 +83,6 @@ function Profile({ user, setUser, onLogout }) {
         </div>
       </motion.div>
 
-      {/* Rest of profile code remains same... */}
       <div className="max-w-3xl mx-auto p-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -303,6 +302,46 @@ function Profile({ user, setUser, onLogout }) {
                     <span className="text-gray-700 group-hover:text-purple-600">Language</span>
                   </button>
                 </div>
+
+                {/* MEET DEVELOPER BUTTON - ATTRACTIVE */}
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  onClick={() => navigate('/developer')}
+                  className="w-full bg-gradient-to-r from-purple-600 via-pink-600 to-red-600 text-white py-4 rounded-xl font-semibold text-lg flex items-center justify-center gap-3 hover:shadow-2xl transition-all relative overflow-hidden group mb-3"
+                >
+                  {/* Animated Background */}
+                  <motion.div
+                    className="absolute inset-0 bg-gradient-to-r from-purple-400 via-pink-400 to-red-400"
+                    animate={{
+                      x: ['-100%', '100%'],
+                    }}
+                    transition={{
+                      duration: 2,
+                      repeat: Infinity,
+                      ease: "linear"
+                    }}
+                  />
+                  
+                  {/* Content */}
+                  <span className="relative z-10 flex items-center gap-2">
+                    <Zap className="w-5 h-5 group-hover:rotate-12 transition-transform" />
+                    Meet the Developer
+                    <Code className="w-5 h-5 group-hover:rotate-12 transition-transform" />
+                  </span>
+                  
+                  {/* Glowing Effect */}
+                  <motion.div
+                    className="absolute inset-0 bg-white/20"
+                    animate={{
+                      opacity: [0, 0.5, 0],
+                    }}
+                    transition={{
+                      duration: 1.5,
+                      repeat: Infinity,
+                    }}
+                  />
+                </motion.button>
 
                 {/* Edit Profile Button */}
                 <button

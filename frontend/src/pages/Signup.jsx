@@ -12,7 +12,7 @@ import {
 import toast from 'react-hot-toast';
 import axios from 'axios';
 
-const API_URL = 'http://100.99.169.71:5000/api';
+const API_URL = 'https://chatinsta-30pa.onrender.com/api';
 
 function Signup({ user, setUser }) {
   const navigate = useNavigate();

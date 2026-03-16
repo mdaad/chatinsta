@@ -17,9 +17,9 @@ import axios from 'axios';
 import * as XLSX from 'xlsx';
 import io from 'socket.io-client';
 
-const API_URL = 'http://100.99.169.71:5000/api';
-const SOCKET_URL = 'http://100.99.169.71:5000';
-const INVITE_LINK = 'https://chatinsta.com/join';
+const API_URL = 'https://chatinsta-30pa.onrender.com/api';
+const SOCKET_URL = 'https://chatinsta-30pa.onrender.com';
+const INVITE_LINK = 'https://chatinsta.surge.sh';
 
 function Contacts({ user, onLogout }) {
   const navigate = useNavigate();

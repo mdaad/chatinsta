@@ -19,8 +19,8 @@ import io from 'socket.io-client';
 import axios from 'axios';
 import toast from 'react-hot-toast';
 
-const API_URL = 'http://100.99.169.71:5000/api';
-const SOCKET_URL = 'http://100.99.169.71:5000';
+const API_URL = 'https://chatinsta-30pa.onrender.com/api';
+const SOCKET_URL = 'https://chatinsta-30pa.onrender.com';
 
 // Image Modal Component
 const ImageModal = ({ isOpen, onClose, imageUrl, caption }) => {
