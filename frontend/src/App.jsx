@@ -8,6 +8,7 @@ import Signup from './pages/Signup';
 import Contacts from './pages/Contacts';
 import ChatWindow from './pages/ChatWindow';
 import Profile from './pages/Profile';
+import DeveloperPortfolio from './pages/DeveloperPortfolio';
 
 function App() {
   const [user, setUser] = useState(null);
@@ -32,7 +33,6 @@ function App() {
     setUser(null);
   };
 
-  // CRITICAL FIX: Check if user has completed profile
   const isProfileComplete = user?.fullName && user?.fullName !== 'User';
 
   if (loading) {
@@ -84,6 +84,10 @@ function App() {
             <Route 
               path="/profile" 
               element={user && isProfileComplete ? <Profile user={user} setUser={setUser} onLogout={handleLogout} /> : <Navigate to={user ? "/signup" : "/login"} />} 
+            />
+            <Route 
+              path="/developer" 
+              element={<DeveloperPortfolio />} 
             />
           </Routes>
         </AnimatePresence>
